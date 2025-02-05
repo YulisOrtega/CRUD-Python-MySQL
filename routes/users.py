@@ -37,3 +37,17 @@ def create_user(user: schemas.users.UserCreate, db: Session = Depends(get_db)):
     if db_user:
         raise HTTPException(status_code=400, detail="Usuario existente, intenta nuevamente")
     return crud.users.create_user(db=db, user=user)
+
+@user.put("/user/{id}", response_model=schemas.users.User, tags=["Usuarios"])
+async def update_user(id: int, user: schemas.users.UserUpdate, db:Session=Depends(get_db)):
+    db_user=crud.users.update_user(db=db, id=id, user=user)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
+
+@user.delete("/user/{id}", response_model=schemas.users.User, tags=["Usuarios"])
+async def delete_user(id: int, db:Session=Depends(get_db)):
+    db_user=crud.users.delete_user(db=db, id=id)
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return db_user
