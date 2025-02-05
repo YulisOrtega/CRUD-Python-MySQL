@@ -19,9 +19,9 @@ def get_db():
     finally:
         db.close()
 
-@user.get("/users/",response_model=List[schemas.users.User],tags=["Usuarios"])
-async def read_users(skip: int=0,limit: int=10,db:Session=Depends(get_db)):
-    db_users = crud.users.get_users(db=db,skip=skip,limit=limit)
+@user.get("/users/",response_model=List[schemas.users.User], tags=["Usuarios"])
+async def read_users(skip: int=0, limit: int=10, db:Session=Depends(get_db)):
+    db_users = crud.users.get_users(db=db, skip=skip, limit=limit)
     return db_users
 
 @user.post("/user/{id}", response_model=schemas.users.User, tags=["Usuarios"])
