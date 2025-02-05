@@ -22,6 +22,7 @@ class User(Base):
     id= Column(Integer,primary_key=True,autoincrement=True)
     nombre= Column(String(60))
     primerApellido = Column(String(60))
+    segundoApellido = Column(String(60))
     TipoUsuario = Column(Enum(TipoUsuario))
     nombreUsuario = Column(String(60))
     correoElectronico = Column(String(100))    
