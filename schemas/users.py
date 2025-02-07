@@ -2,8 +2,6 @@ from typing import List, Union, Optional
 from pydantic import BaseModel
 from datetime import datetime
 
-from models.users import TipoUsuario
-
 class UserBase(BaseModel):
     nombre: str
     primerApellido: str

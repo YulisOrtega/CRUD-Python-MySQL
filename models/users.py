@@ -19,14 +19,14 @@ class Estatus(str,enum.Enum):
 class User(Base): 
     __tablename__="tbb_usuarios"
     
-    id= Column(Integer,primary_key=True,autoincrement=True)
+    id= Column(Integer, primary_key=True, autoincrement=True)
     nombre= Column(String(60))
     primerApellido = Column(String(60))
     segundoApellido = Column(String(60))
-    TipoUsuario = Column(Enum(TipoUsuario))
+    tipoUsuario = Column(Enum(TipoUsuario))
     nombreUsuario = Column(String(60))
     correoElectronico = Column(String(100))    
-    contrasena = Column(String(60))
+    contrasena = Column(String(40))
     numeroTelefono = Column(String(20))
     estatus = Column(Enum(Estatus))
     fechaRegistro = Column(DateTime)

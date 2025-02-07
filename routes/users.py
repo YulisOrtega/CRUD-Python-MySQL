@@ -1,5 +1,3 @@
-
-from urllib import response
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 import crud.users
@@ -20,7 +18,7 @@ def get_db():
         db.close()
 
 @user.get("/users/",response_model=List[schemas.users.User], tags=["Usuarios"])
-async def read_users(skip: int=0, limit: int=10, db:Session=Depends(get_db)):
+async def read_users(skip: int=0, limit: int=10, db: Session= Depends(get_db)):
     db_users = crud.users.get_users(db=db, skip=skip, limit=limit)
     return db_users
 
