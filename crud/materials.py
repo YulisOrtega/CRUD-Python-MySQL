@@ -8,7 +8,7 @@ def get_material(db:Session, id: int):
 def get_material_by_materials(db:Session, material: str):
     return db.query(models.materialss.Material).filter(models.materialss.Material.tipoMaterial == material).first()
 
-def get_materials(db:Session, skip: int =0, limit: int=0):
+def get_materials(db:Session, skip: int =0, limit: int=10):
     return db.query(models.materialss.Material).offset(skip).limit(limit).all()
 
 def create_material(db: Session, material: schemas.materials.MaterialCreate):
