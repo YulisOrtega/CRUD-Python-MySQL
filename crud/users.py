@@ -12,6 +12,11 @@ def get_user_by_usuario(db:Session, usuario: str):
 def get_users(db:Session, skip: int =0, limit: int=0):
     return db.query(models.users.User).offset(skip).limit(limit).all()
 
+def get_user_by_credentials(db:Session, username: str, correo: str, telefono: str, password: str):
+    return db.query(models.users.User).filter((models.users.User.nombreUsuario == username) | (models.users.User.correoElectronico == correo) | (models.users.User.numeroTelefono == telefono), models.users.User.contrasena == password).first()
+
+def get_user_by_email(db:Session, email: str):
+    return db.query(models.users.User).filter(models.users.User.correoElectronico == email).first()
 
 def create_user(db: Session, user: schemas.users.UserCreate):
     db_user = models.users.User(

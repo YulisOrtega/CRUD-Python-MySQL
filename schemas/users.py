@@ -1,3 +1,4 @@
+from token import OP
 from typing import List, Union, Optional
 from pydantic import BaseModel
 from datetime import datetime
@@ -23,4 +24,7 @@ class User(UserBase):
     id:int
     class Config:
         orm_mode=True
-        
+
+class UserLogin(BaseModel):
+    correoElectronico: Optional[str] = None
+    contrasena: str
